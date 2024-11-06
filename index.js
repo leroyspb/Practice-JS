@@ -1,4 +1,3 @@
-
 //
 // Задание 1.
 //
@@ -873,75 +872,76 @@
 //
 
 
-function Candy(name) {
-    this.tasty = 'delisious'
-        this.name = name
-}
+// function Candy(name) {
+//     this.tasty = 'delisious'
+//         this.name = name
+// }
+//
+// Candy.prototype.getWeight = function (weight) {
+//     console.log(`Weight is ${weight} g`)
+// }
+//
+// function ChocoCandy(name, choco) {
+//     this.name = name
+//     this.choco = choco
+// }
 
-Candy.prototype.getWeight = function (weight) {
-    console.log(`Weight is ${weight} g`)
-}
+// ChocoCandy.prototype = new Candy()
+// ChocoCandy.prototype.getWeight = function (weight){
+//     console.log(`Candy weight is ${weight} g`)
+// }
 
-function ChocoCandy(name, choco) {
-    this.name = name
-    this.choco = choco
-}
-
-ChocoCandy.prototype = new Candy()
-ChocoCandy.prototype.getWeight = function (weight){
-    console.log(`Candy weight is ${weight} g`)
-}
-
-const twix = new ChocoCandy('twix', 'milk');
-const snikers = new Candy('snikers', )
-twix.getWeight(47)
-snikers.getWeight(50)
-console.log(twix)
-console.log(snikers)
-
-
+// const twix = new ChocoCandy('twix', 'milk');
+// const snikers = new Candy('snikers', )
+// twix.getWeight(47)
+// snikers.getWeight(50)
+// console.log(twix)
+// console.log(snikers)
 
 
 
 
 
 
-const person = {
-    city : 'Moscow'
-}
-
-const student = Object.create(person)
-
-student.ownCity = 'Piter'
-
-console.log(student.city)
-console.log(Object.getPrototypeOf(student))
 
 
-function Candy(weight) {
-    this.tasty = 'delicious';
-    this.getWeight = function (){
-        console.log('This Candy has weight ' + weight + ' kg')
-    }
-}
-
-const newYearGift  = new Candy(1)
-newYearGift.getWeight();
+// const person = {
+//     city : 'Moscow'
+// }
+//
+// const student = Object.create(person)
+//
+// student.ownCity = 'Piter'
+//
+// console.log(student.city)
+// console.log(Object.getPrototypeOf(student))
+//
+//
+// function Candy(weight) {
+//     this.tasty = 'delicious';
+//     this.getWeight = function (){
+//         console.log('This Candy has weight ' + weight + ' kg')
+//
+//     }
+// }
+//
+// const newYearGift  = new Candy(1)
+// newYearGift.getWeight();
 
 
 
 
 
 // class
-class Parent {
-    constructor(ownCity) {
-        this.ownCity = ownCity;
-        this.hasFlat = true;
-    }
-    getInfo() {
-        console.log('I live in ' + this.ownCity);
-    }
-}
+// class Parent {
+//     constructor(ownCity) {
+//         this.ownCity = ownCity;
+//         this.hasFlat = true;
+//     }
+//     getInfo() {
+//         console.log('I live in ' + this.ownCity);
+//     }
+// }
 
 // constructor
 
@@ -954,7 +954,82 @@ class Parent {
 // Parent.prototype.getInfo() {
 //     console.log('I live in ' + this.ownCity);
 // }
+//
+//
+// const parent = new Parent('SPB');
+// parent.getInfo();
 
 
-const parent = new Parent('SPB');
-parent.getInfo();
+
+
+
+
+class Parent {
+    constructor(ownCity) {
+        this.ownCity = ownCity || 'Moscow';
+        this.hasFlat = true;
+    }
+    getInfo() {
+        return 'I live in ' + this.ownCity;
+    }
+}
+
+// Чтобы установить делегирующую связь [[Prototype]] между двумя прототипами функции, нужно использовать слово extends.
+class Child extends Parent {
+    constructor(isStudent, city, ownCity) {
+    super(ownCity);
+    this.isStudent = isStudent;
+    this.city = isStudent ? city : ownCity;
+    }
+    getInfo() {
+        if (this.isStudent) {
+            return 'I study  in ' + this.city
+        } else {
+            return super.getInfo();
+        }
+    }
+}
+
+class Animal{
+
+}
+
+const student = new Child(true, 'Piter')
+console.log(student.getInfo())
+
+
+const employee = new Child(false, 'New York')
+console.log(employee.getInfo())
+
+console.log(student instanceof Child)
+console.log(student instanceof Parent)
+console.log(student instanceof Animal)
+
+
+class Amazing{
+    static cool(){
+        console.log('cool')
+    }
+    wow() {
+        console.log('wow')
+    }
+}
+
+class Wonderful extends Amazing{
+    static awesome(){
+        super.cool();
+        console.log('awesome')
+    }
+    great(){
+        super.cool();
+        console.log('great')
+    }
+}
+
+// Amazing.cool()
+// Wonderful.cool()
+// Wonderful.awesome()
+
+const instanse = new Wonderful();
+
+instanse.great();
