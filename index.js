@@ -963,73 +963,129 @@
 
 
 
+//
+// class Parent {
+//     constructor(ownCity) {
+//         this.ownCity = ownCity || 'Moscow';
+//         this.hasFlat = true;
+//     }
+//     getInfo() {
+//         return 'I live in ' + this.ownCity;
+//     }
+// }
+//
+// // Чтобы установить делегирующую связь [[Prototype]] между двумя прототипами функции, нужно использовать слово extends.
+// class Child extends Parent {
+//     constructor(isStudent, city, ownCity) {
+//     super(ownCity);
+//     this.isStudent = isStudent;
+//     this.city = isStudent ? city : ownCity;
+//     }
+//     getInfo() {
+//         if (this.isStudent) {
+//             return 'I study  in ' + this.city
+//         } else {
+//             return super.getInfo();
+//         }
+//     }
+// }
+//
+// class Animal{
+//
+// }
+//
+// const student = new Child(true, 'Piter')
+// console.log(student.getInfo())
+//
+//
+// const employee = new Child(false, 'New York')
+// console.log(employee.getInfo())
+//
+// console.log(student instanceof Child)
+// console.log(student instanceof Parent)
+// console.log(student instanceof Animal)
+//
+//
+// class Amazing{
+//     static cool(){
+//         console.log('cool')
+//     }
+//     wow() {
+//         console.log('wow')
+//     }
+// }
+//
+// class Wonderful extends Amazing{
+//     static awesome(){
+//         super.cool();
+//         console.log('awesome')
+//     }
+//     great(){
+//         super.cool();
+//         console.log('great')
+//     }
+// }
+//
+// // Amazing.cool()
+// // Wonderful.cool()
+// // Wonderful.awesome()
+//
+// const instanse = new Wonderful();
+//
+// instanse.great();
 
-class Parent {
-    constructor(ownCity) {
-        this.ownCity = ownCity || 'Moscow';
-        this.hasFlat = true;
-    }
-    getInfo() {
-        return 'I live in ' + this.ownCity;
+
+
+class ElectricDevice {
+  constructor(name,powerConsumption){
+    this.name = name
+    this.PowerWt = powerConsumption
+    this.power = false;
+  }
+
+  enable(){
+    this.power = true;
+    console.log(`${this.name} включено в розетку`)
+  }
+
+  disable(){
+    this.power = false;
+    console.log(`${this.name} выключено из розетки`)
+  }
+
+  getPower(){
+    console.log(`потребляемая мощность ${this.PowerWt} Вт`)
+  }
+}
+
+// класс лампа
+
+class Lamp extends ElectricDevice{
+  constructor(name, powerConsumption, material) {
+     super()
+     this.name = name
+     this.PowerWt = powerConsumption,
+     this.material = material
     }
 }
 
-// Чтобы установить делегирующую связь [[Prototype]] между двумя прототипами функции, нужно использовать слово extends.
-class Child extends Parent {
-    constructor(isStudent, city, ownCity) {
-    super(ownCity);
-    this.isStudent = isStudent;
-    this.city = isStudent ? city : ownCity;
+// класс компьютер
+
+class Computer extends ElectricDevice{
+    constructor(name, powerConsumption, system) {
+        super()
+        this.name = name,
+        this.PowerWt = powerConsumption,
+        this.system = system
     }
-    getInfo() {
-        if (this.isStudent) {
-            return 'I study  in ' + this.city
-        } else {
-            return super.getInfo();
-        }
-    }
-}
-
-class Animal{
-
-}
-
-const student = new Child(true, 'Piter')
-console.log(student.getInfo())
+  }
 
 
-const employee = new Child(false, 'New York')
-console.log(employee.getInfo())
+const lamp = new Lamp('лампа', 5, "стекло");
+const computer = new Computer('компьютер', 300, "Windows");
 
-console.log(student instanceof Child)
-console.log(student instanceof Parent)
-console.log(student instanceof Animal)
-
-
-class Amazing{
-    static cool(){
-        console.log('cool')
-    }
-    wow() {
-        console.log('wow')
-    }
-}
-
-class Wonderful extends Amazing{
-    static awesome(){
-        super.cool();
-        console.log('awesome')
-    }
-    great(){
-        super.cool();
-        console.log('great')
-    }
-}
-
-// Amazing.cool()
-// Wonderful.cool()
-// Wonderful.awesome()
-
-const instanse = new Wonderful();
-
-instanse.great();
+computer.enable()
+lamp.getPower()
+console.log(lamp)
+console.log(computer)
+computer.getPower()
