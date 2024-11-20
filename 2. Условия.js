@@ -25,21 +25,33 @@
 // const num1 = prompt('Введите первое число')
 // const num2 = prompt('Введите второе число')
 // const num3 = prompt('Введите третье число')
+//
+// if (num1 > num2) {
+//     if (num1 > num3) {
+//         console.log(`Число ${num1} является максимальным`)
+//     } else {
+//         console.log(`Число ${num3} является максимальным`)
+//     }
+// }  else if (num2 > num3) {
+//     console.log(`Число ${num2} является максимальным`)
+// } else {
+//     console.log(`Число ${num3} является максимальным`)
+// }
 
-const num1 = 3
-const num2 = 2
-const num3 = 1
 
 
-if (num1 > num2) {
-    if (num2 < num3) {
-        console.log(`Число ${num3} является максимальным`)
+// Задание 3
+// Напишите программу, которая запрашивает у пользователя число N и отвечает "Число {N} четное!" или "Число {N} нечетное!"
 
-    }
-} else if (num1 < num2){
-    if (num2 < num3){
-    console.log(`Число ${num3} является максимальным`)
-    } else {
-        console.log(`Число ${num3} является максимальным`)
-    }
-}
+// // const numN = prompt('Введите число "N"')
+// const numN = 25
+// if (numN !== 0 && numN !== undefined){
+//     if (numN % 2 === 0) {
+//     console.log(`Число ${numN} четное`)
+// } else {
+//     console.log(`Число ${numN} нечетное`)
+// }
+// }else {
+//     console.log('Введите целое число отличное от "0"')
+// }
+
